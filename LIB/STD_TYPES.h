@@ -20,5 +20,7 @@ typedef  double		          f64;
 
 #define NULL 				(void*)0
 
+#define OK                  1
+#define NOK                 0
 
 #endif /* STD_TYPES_H_ */
