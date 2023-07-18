@@ -20,7 +20,13 @@ typedef  double		          f64;
 
 #define NULL 				(void*)0
 
-#define OK                  1
-#define NOK                 0
+typedef enum
+{
+
+    NOK,
+    OK,
+    OUT_OF_RANGE_ERR
+
+}ErrorState_t;
 
 #endif /* STD_TYPES_H_ */

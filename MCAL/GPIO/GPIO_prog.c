@@ -1,7 +1,11 @@
 /****************************************************************************************************/
 /* AUTHOR               :     Ahmed Osman                                                           */
 /* Origin Date          :     15/07/2023                                                            */
-/* Version              :     1.0.0                                                                 */
+/* Version              :     1.0.2                                                                 */
+/* Modifications        :                                                                           */
+/*      1- 16/07/2023 -> Added Atomic set/reset pin value function                                  */
+/*      2- 16/07/2023 -> Added pin lock function                                                    */
+/*      3- 18/07/2023 -> Added pin toggle function                                                  */
 /* SWC                  :     GPIO                                                                  */
 /****************************************************************************************************/
 
@@ -14,7 +18,7 @@
 #include "GPIO_priv.h"
 
 
-u8 GPIO_u8SetPinDirection(u8 Copy_u8PortID, u8 Copy_u8PinID, u8 Copy_u8Mode)
+u8 GPIO_u8SetPinMode(u8 Copy_u8PortID, u8 Copy_u8PinID, u8 Copy_u8Mode)
 {
     u8 Local_u8ErrorState = OK;
 
@@ -168,7 +172,7 @@ u8 GPIO_u8GetPinValue(u8 Copy_u8PortID, u8 Copy_u8PinID, u8 * Ptr_u8ReturnValue)
 u8 GPIO_u8SetPortMode(u8 Copy_u8PortID, u8 Copy_u8PortPins, u8 Copy_u8Mode)
 {
     u8 Local_ErrorState  = OK;
-    int i;
+    u8 i;
 
     switch (Copy_u8PortID)
     {
@@ -403,6 +407,162 @@ u8 GPIO_u8SetPortValue(u8 Copy_u8PortID, u8 Copy_u8PortPins, u8 Copy_u8Value)
     default:
         Local_ErrorState  = NOK;
         break;
+    }
+
+    return Local_ErrorState;
+}
+
+
+u8 GPIO_u8SetResetPin(u8 Copy_u8PortID, u8 Copy_u8PinID, u8 Copy_u8Value)
+{
+    u8 Local_ErrorState = OK;
+
+    if(Copy_u8PinID < 16)
+    {
+        switch(Copy_u8PortID)
+        {
+        case GPIO_u8PORTA:
+
+            switch(Copy_u8Value)
+            {
+                case GPIO_u8LOW:
+                    GPIOA->GPIO_BRR = 1 << Copy_u8PinID;
+                    break;
+
+                case GPIO_u8HIGH:
+                    GPIOA->GPIO_BSRR = 1 << Copy_u8PinID;
+                    break;
+
+                default:
+                    Local_ErrorState = NOK;
+                    break;
+            }
+            break;
+
+        case GPIO_u8PORTB:
+            switch(Copy_u8Value)
+            {
+                case GPIO_u8LOW:
+                    GPIOB->GPIO_BRR = 1 << Copy_u8PinID;
+                    break;
+
+                case GPIO_u8HIGH:
+                    GPIOB->GPIO_BSRR = 1 << Copy_u8PinID;
+                    break;
+
+                default:
+                    Local_ErrorState = NOK;
+                    break;
+            }
+            break;
+
+        case GPIO_u8PORTC:
+            switch(Copy_u8Value)
+            {
+                case GPIO_u8LOW:
+                    GPIOC->GPIO_BRR = 1 << Copy_u8PinID;
+                    break;
+
+                case GPIO_u8HIGH:
+                    GPIOC->GPIO_BSRR = 1 << Copy_u8PinID;
+                    break;
+
+                default:
+                    Local_ErrorState = NOK;
+                    break;
+            }
+            break;
+
+            default:
+                Local_ErrorState = NOK;
+                break;
+
+        } /* end port switch*/
+
+    } /* end if*/
+    else
+    {
+        Local_ErrorState = NOK;
+    }
+
+    return Local_ErrorState;
+}
+
+u8 GPIO_u8TogglePin(u8 Copy_u8PortID, u8 Copy_u8PinID)
+{
+    u8 Local_ErrorState = OK;
+
+    switch(Copy_u8PortID)
+    {
+        case GPIO_u8PORTA:
+            TOG_BIT(GPIOA->GPIO_ODR, Copy_u8PinID);
+            break;
+
+        case GPIO_u8PORTB:
+            TOG_BIT(GPIOB->GPIO_ODR, Copy_u8PinID);
+            break;
+
+        case GPIO_u8PORTC:
+            TOG_BIT(GPIOC->GPIO_ODR, Copy_u8PinID);
+            break;
+
+        default:
+            Local_ErrorState = NOK;
+    }
+
+    return Local_ErrorState;
+
+}
+
+
+u8 GPIO_u8LockPin(u8 Copy_u8PortID, u8 Copy_u8PinID)
+{
+    u8 Local_ErrorState = OK;
+
+    if(Copy_u8PinID < GPIO_LOWER_PINS_RANGE)
+    {
+        switch (Copy_u8PortID)
+        {
+        case GPIO_u8PORTA:
+                /* LCKK Pin sequence*/
+            GPIOA->GPIO_LCKR = 1 << GPIO_LCKK_PIN;
+            GPIOA->GPIO_LCKR = 0 << GPIO_LCKK_PIN;
+            GPIOA->GPIO_LCKR = 1 << GPIO_LCKK_PIN;
+
+            while( GET_BIT(GPIOA->GPIO_LCKR, GPIO_LCKK_PIN) != 0 );
+            while( GET_BIT(GPIOA->GPIO_LCKR, GPIO_LCKK_PIN) != 1 );
+
+            GPIOA->GPIO_LCKR = 1 << Copy_u8PinID;
+            break;
+
+        case GPIO_u8PORTB:
+            GPIOB->GPIO_LCKR = 1 << GPIO_LCKK_PIN;
+            GPIOB->GPIO_LCKR = 0 << GPIO_LCKK_PIN;
+            GPIOB->GPIO_LCKR = 1 << GPIO_LCKK_PIN;
+
+            while( GET_BIT(GPIOB->GPIO_LCKR, GPIO_LCKK_PIN) != 0 );
+            while( GET_BIT(GPIOB->GPIO_LCKR, GPIO_LCKK_PIN) != 1 );
+            GPIOB->GPIO_LCKR = 1 << Copy_u8PinID;
+            break;
+
+        case GPIO_u8PORTC:
+            GPIOC->GPIO_LCKR = 1 << GPIO_LCKK_PIN;
+            GPIOC->GPIO_LCKR = 0 << GPIO_LCKK_PIN;
+            GPIOC->GPIO_LCKR = 1 << GPIO_LCKK_PIN;
+
+            while( GET_BIT(GPIOC->GPIO_LCKR, GPIO_LCKK_PIN) != 0 );
+            while( GET_BIT(GPIOC->GPIO_LCKR, GPIO_LCKK_PIN) != 1 );
+            GPIOC->GPIO_LCKR = 1 << Copy_u8PinID;
+            break;
+        
+        default:
+            Local_ErrorState = NOK;
+            break;
+        }
+    }
+    else
+    {
+        Local_ErrorState = NOK;
     }
 
     return Local_ErrorState;

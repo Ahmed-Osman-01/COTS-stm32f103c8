@@ -1,7 +1,7 @@
 /****************************************************************************/
 /* AUTHOR               :     Ahmed Osman                                   */
 /* Origin Date          :     15/07/2023                                    */
-/* Version              :     1.0.0                                         */
+/* Version              :     1.0.2                                         */
 /* SWC                  :     GPIO                                          */
 /****************************************************************************/
 
@@ -19,5 +19,7 @@
 #define GPIO_LAST_PIN_START_BIT       28  /* The position of the first bit of the last pin in a CRL or CRH register*/
 
 #define GPIO_PORT_VALUE_MASK            0b11111111 /*Mask used to apply the value for the first 8 pins or last 8 pins of port to high or low*/
+
+#define GPIO_LCKK_PIN          16
 
 #endif

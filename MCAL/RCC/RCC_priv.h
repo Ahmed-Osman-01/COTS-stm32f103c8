@@ -41,7 +41,7 @@
 #define RCC_u8PLL_MUL_14     12
 #define RCC_u8PLL_MUL_15     13
 #define RCC_u8PLL_MUL_16     14
-#define RCC_u8PLL_MUL_16     15
+// #define RCC_u8PLL_MUL_16     15
 
 /*Mask for clearing PLL MUL bits in CFGR*/
 #define RCC_u8PLL_MUL_MSK   0xFFC3FFFF

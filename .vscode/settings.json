@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "std_types.h": "c",
-        "bit_math.h": "c"
+        "bit_math.h": "c",
+        "led_int.h": "c"
     }
 }
