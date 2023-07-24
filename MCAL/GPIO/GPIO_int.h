@@ -35,9 +35,9 @@
 
 /* Modes */
     /*Input:*/
-#define GIO_u8INPUT_ANALOG              0b0000
-#define GIO_u8INPUT_FLOATING            0b0100
-#define GIO_u8INPUT_PULL_UP_DOWN        0b1000
+#define GPIO_u8INPUT_ANALOG              0b0000
+#define GPIO_u8INPUT_FLOATING            0b0100
+#define GPIO_u8INPUT_PULL_UP_DOWN        0b1000
 
     /*Output*/
 #define GPIO_u8OUTPUT_PUSH_PULL_2MHZ              0b0010

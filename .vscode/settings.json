@@ -2,6 +2,7 @@
     "files.associations": {
         "std_types.h": "c",
         "bit_math.h": "c",
-        "led_int.h": "c"
+        "led_int.h": "c",
+        "btn_int.h": "c"
     }
 }

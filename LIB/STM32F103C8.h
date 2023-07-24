@@ -287,4 +287,66 @@ typedef struct
 #define GPIOC   ((GPIO_REG_DEF_t *) GPIOC_u32BASE_ADDRESS)
 
 
+
+/****************************************************************************************************/
+/******************************************** NVIC Registers ****************************************/
+/****************************************************************************************************/
+
+#define NVIC_u32BASE_ADDRESS    0xE000E100
+
+typedef struct
+{
+    u32 NVIC_ISER[3];
+
+    u32 NVIC_RESERVED1[29];
+
+    u32 NVIC_ICER[3];
+
+    u32 NVIC_RESERVED2[29];
+
+    u32 NVIC_ISPR[3];
+
+    u32 NVIC_RESERVED3[29];
+
+    u32 NVIC_ICPR[3];
+
+    u32 NVIC_RESERVED4[29];
+
+    volatile u32 NVIC_IABR[3];
+
+    u32 RESERVED5[61];
+
+    u8 NVIC_IPR[81];
+
+}NVIC_REG_DEF_t;
+
+#define MNVIC    ((NVIC_REG_DEF_t *) NVIC_u32BASE_ADDRESS)
+
+/****************************************************************************************************/
+/******************************************** SCB Registers *****************************************/
+/****************************************************************************************************/
+
+#define SCB_u32BASE_ADDRESS    0xE000ED00
+
+typedef struct
+{
+    u32 SCB_CPUID;
+    u32 SCB_ICSR;
+    u32 SCB_VTOR;
+    u32 SCB_AIRCR;
+    u32 SCB_SCR;
+    u32 SCB_CCR;
+    u32 SCB_SHPR1;
+    u32 SCB_SHPR2;
+    u32 SCB_SHPR3;
+    u32 SCB_SHCRS;
+    u32 SCB_CFSR;
+    u32 SCB_HFSR;
+    u32 SCB_MMAR;
+    u32 SCB_BFAR;
+
+}SCB_REG_DEF_t;
+
+#define MSCB     ((SCB_REG_DEF_t *) SCB_u32BASE_ADDRESS)
+
 #endif
