@@ -349,4 +349,42 @@ typedef struct
 
 #define MSCB     ((SCB_REG_DEF_t *) SCB_u32BASE_ADDRESS)
 
+/****************************************************************************************************/
+/************************************ AFIO Registers ************************************************/
+/****************************************************************************************************/
+
+#define AFIO_BASE_ADDRESS   0x40010000
+
+
+typedef struct
+{
+    u32 AFIO_EVCR;
+    u32 AFIO_MAPR;
+    u32 AFIO_EXTICR[4];
+    u32 AFIO_MAPR2;
+
+}AFIO_REG_DEF_t;
+
+#define MAFIO   ((AFIO_REG_DEF_t *) AFIO_BASE_ADDRESS)
+
+
+/****************************************************************************************************/
+/************************************ EXTI Registers ************************************************/
+/****************************************************************************************************/
+
+#define EXTI_BASE_ADDRESS   0x40010400
+
+typedef struct
+{
+    u32 EXTI_IMR;
+    u32 EXTI_EMR;
+    u32 EXTI_RTSR;
+    u32 EXTI_FTSR;
+    u32 EXTI_SWIER;
+    u32 EXTI_PR;
+
+}EXTI_REG_DEF_t;
+
+#define MEXTI   ((EXTI_REG_DEF_t *) EXTI_BASE_ADDRESS)
+
 #endif
