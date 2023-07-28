@@ -25,7 +25,8 @@ typedef enum
 
     NOK,
     OK,
-    OUT_OF_RANGE_ERR
+    OUT_OF_RANGE_ERR,
+    NULL_POINTER_ERR
 
 }ErrorState_t;
 

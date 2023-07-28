@@ -387,4 +387,23 @@ typedef struct
 
 #define MEXTI   ((EXTI_REG_DEF_t *) EXTI_BASE_ADDRESS)
 
+
+
+/****************************************************************************************************/
+/************************************ SysTick Registers *********************************************/
+/****************************************************************************************************/
+
+#define STK_BASE_ADDRESS    0xE000E010
+
+typedef struct
+{
+    u32 STK_CTRL;
+    u32 STK_LOAD;
+    u32 STK_VAL;
+    u32 STK_CALIB;
+
+}STK_REG_DEF_t;
+
+#define MSTK    ((STK_REG_DEF_t *) STK_BASE_ADDRESS)
+
 #endif

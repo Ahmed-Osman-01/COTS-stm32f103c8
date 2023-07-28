@@ -61,6 +61,11 @@ ErrorState_t MEXTI_u8SoftwareInterrupt(u8 copy_u8Line);
 /****************************************************************************************************/
 ErrorState_t MEXTI_u8SetInterruptTrigger(u8 copy_u8Line, u8 copy_u8TriggerEdge);
 
-
+/****************************************************************************************************/
+/* Sets the callback function for the specified external interrupt line                             */
+/* @param copy_u8Line The EXTI Line                                                                 */
+/* @param ptrFn Pointer to the callback function                                                    */
+/****************************************************************************************************/
+ErrorState_t MEXTI_enSetCallBack(u8 copy_u8Line, void (*ptrFn)(void));
 
 #endif
