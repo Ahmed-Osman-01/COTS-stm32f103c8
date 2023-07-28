@@ -151,3 +151,17 @@ static void LEDMRX_voidSetRowValues(u8 copy_u8RowPattern)
     GPIO_u8SetPinValue(HLEDMRX_u8ROW6, GET_BIT(copy_u8RowPattern, 6));
     GPIO_u8SetPinValue(HLEDMRX_u8ROW7, GET_BIT(copy_u8RowPattern, 7));
 }
+
+
+void HLEDMRX_voidDisplayMovingLongPattern(u8 * ptr_u8LongPattern, u8 copy_u8PatternLength, HLEDMRX_Speeds_t copy_u8Speed)
+{
+    u8 i, j;
+
+    for(i = 0; i < copy_u8PatternLength-8; i++)
+    {
+        for(j = 0; j < copy_u8Speed; j++)
+        {
+            HLEDMRX_voidDisplayPattern(ptr_u8LongPattern[i]);
+        }
+    }
+}
