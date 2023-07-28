@@ -119,6 +119,7 @@ ErrorState_t MNVIC_enClearInterruptPending(MNVIC_External_Interrupt_Number_t cop
 /****************************************************************************************************/
 ErrorState_t MNVIC_enGetActiveStatus(MNVIC_External_Interrupt_Number_t copy_enInterruptNumber, u8 * ptr_ReturnState);
 
+/* BAD DESIGN, NEEDS TO BE IMPLEMENTED AFTER IMPLEMENTING THE SCB MODULE*/
 ErrorState_t MNCIV_enSetInterruptPeriority(MNVIC_External_Interrupt_Number_t copy_enInterruptNumber, u8 copy_u8Periotity, u8 copy_u8SubPeriority);
 
 

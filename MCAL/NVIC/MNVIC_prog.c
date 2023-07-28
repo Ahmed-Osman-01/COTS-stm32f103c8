@@ -33,39 +33,39 @@ ErrorState_t MNVIC_enInitNVIC(void)
 
 ErrorState_t MNVIC_enEnableInterrupt(MNVIC_External_Interrupt_Number_t copy_enInterruptNumber)
 {
-    ErrorState_t Local_ErrorState = OK;
+    // ErrorState_t Local_ErrorState = OK;
 
-    if (copy_enInterruptNumber < 32)
-    {
-        MNVIC->NVIC_ISER[0] = 1 << copy_enInterruptNumber;
-    }
-    else if (copy_enInterruptNumber < 64)
-    {
-        copy_enInterruptNumber -= 32;
-        MNVIC->NVIC_ISER[1] = 1 << copy_enInterruptNumber;
-    }
-    else if (copy_enInterruptNumber < 68)
-    {
-        copy_enInterruptNumber -= 64;
-        MNVIC->NVIC_ISER[2] = 1 << copy_enInterruptNumber;
-    }
-    else
-    {
-        Local_ErrorState = OUT_OF_RANGE_ERR;
-    }
-
-
-    // u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
-    // copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
-
-    // if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    // if (copy_enInterruptNumber < 32)
     // {
-    //    MNVIC->NVIC_ISER[Local_u8RegisterNumber] = 1 << copy_enInterruptNumber;
+    //     MNVIC->NVIC_ISER[0] = 1 << copy_enInterruptNumber;
+    // }
+    // else if (copy_enInterruptNumber < 64)
+    // {
+    //     copy_enInterruptNumber -= 32;
+    //     MNVIC->NVIC_ISER[1] = 1 << copy_enInterruptNumber;
+    // }
+    // else if (copy_enInterruptNumber < 68)
+    // {
+    //     copy_enInterruptNumber -= 64;
+    //     MNVIC->NVIC_ISER[2] = 1 << copy_enInterruptNumber;
     // }
     // else
     // {
     //     Local_ErrorState = OUT_OF_RANGE_ERR;
     // }
+
+
+    u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
+    copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
+
+    if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    {
+       MNVIC->NVIC_ISER[Local_u8RegisterNumber] = 1 << copy_enInterruptNumber;
+    }
+    else
+    {
+        Local_ErrorState = OUT_OF_RANGE_ERR;
+    }
 
 
     return Local_ErrorState;
@@ -74,39 +74,39 @@ ErrorState_t MNVIC_enEnableInterrupt(MNVIC_External_Interrupt_Number_t copy_enIn
 
 ErrorState_t MNVIC_enDisableInterrupt(MNVIC_External_Interrupt_Number_t copy_enInterruptNumber)
 {
-    ErrorState_t Local_ErrorState = OK;
+    // ErrorState_t Local_ErrorState = OK;
 
-    if (copy_enInterruptNumber < 32)
-    {
-        MNVIC->NVIC_ICER[0] = 1 << copy_enInterruptNumber;
-    }
-    else if (copy_enInterruptNumber < 64)
-    {
-        copy_enInterruptNumber -= 32;
-        MNVIC->NVIC_ICER[1] = 1 << copy_enInterruptNumber;
-    }
-    else if (copy_enInterruptNumber < 68)
-    {
-        copy_enInterruptNumber -= 64;
-        MNVIC->NVIC_ICER[2] = 1 << copy_enInterruptNumber;
-    }
-    else
-    {
-        Local_ErrorState = OUT_OF_RANGE_ERR;
-    }
-
-
-    // u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
-    // copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
-
-    // if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    // if (copy_enInterruptNumber < 32)
     // {
-    //    MNVIC->NVIC_ICER[Local_u8RegisterNumber] = 1 << copy_enInterruptNumber;
+    //     MNVIC->NVIC_ICER[0] = 1 << copy_enInterruptNumber;
+    // }
+    // else if (copy_enInterruptNumber < 64)
+    // {
+    //     copy_enInterruptNumber -= 32;
+    //     MNVIC->NVIC_ICER[1] = 1 << copy_enInterruptNumber;
+    // }
+    // else if (copy_enInterruptNumber < 68)
+    // {
+    //     copy_enInterruptNumber -= 64;
+    //     MNVIC->NVIC_ICER[2] = 1 << copy_enInterruptNumber;
     // }
     // else
     // {
     //     Local_ErrorState = OUT_OF_RANGE_ERR;
     // }
+
+
+    u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
+    copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
+
+    if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    {
+       MNVIC->NVIC_ICER[Local_u8RegisterNumber] = 1 << copy_enInterruptNumber;
+    }
+    else
+    {
+        Local_ErrorState = OUT_OF_RANGE_ERR;
+    }
 
 
     return Local_ErrorState;
@@ -117,37 +117,37 @@ ErrorState_t MNVIC_enSetInterruptPending(MNVIC_External_Interrupt_Number_t copy_
 {
     ErrorState_t Local_ErrorState = OK;
 
-    if (copy_enInterruptNumber < 32)
-    {
-        MNVIC->NVIC_ISPR[0] = 1 << copy_enInterruptNumber;
-    }
-    else if (copy_enInterruptNumber < 64)
-    {
-        copy_enInterruptNumber -= 32;
-        MNVIC->NVIC_ISPR[1] = 1 << copy_enInterruptNumber;
-    }
-    else if (copy_enInterruptNumber < 68)
-    {
-        copy_enInterruptNumber -= 64;
-        MNVIC->NVIC_ISPR[2] = 1 << copy_enInterruptNumber;
-    }
-    else
-    {
-        Local_ErrorState = OUT_OF_RANGE_ERR;
-    }
-
-
-    // u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
-    // copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
-
-    // if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    // if (copy_enInterruptNumber < 32)
     // {
-    //    MNVIC->NVIC_ISPR[Local_u8RegisterNumber] = 1 << copy_enInterruptNumber;
+    //     MNVIC->NVIC_ISPR[0] = 1 << copy_enInterruptNumber;
+    // }
+    // else if (copy_enInterruptNumber < 64)
+    // {
+    //     copy_enInterruptNumber -= 32;
+    //     MNVIC->NVIC_ISPR[1] = 1 << copy_enInterruptNumber;
+    // }
+    // else if (copy_enInterruptNumber < 68)
+    // {
+    //     copy_enInterruptNumber -= 64;
+    //     MNVIC->NVIC_ISPR[2] = 1 << copy_enInterruptNumber;
     // }
     // else
     // {
     //     Local_ErrorState = OUT_OF_RANGE_ERR;
     // }
+
+
+    u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
+    copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
+
+    if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    {
+       MNVIC->NVIC_ISPR[Local_u8RegisterNumber] = 1 << copy_enInterruptNumber;
+    }
+    else
+    {
+        Local_ErrorState = OUT_OF_RANGE_ERR;
+    }
 
 
     return Local_ErrorState;
@@ -158,38 +158,37 @@ ErrorState_t MNVIC_enClearInterruptPending(MNVIC_External_Interrupt_Number_t cop
 {
     ErrorState_t Local_ErrorState = OK;
 
-    if (copy_enInterruptNumber < 32)
-    {
-        MNVIC->NVIC_ICPR[0] = 1 << copy_enInterruptNumber;
-    }
-    else if (copy_enInterruptNumber < 64)
-    {
-        copy_enInterruptNumber -= 32;
-        MNVIC->NVIC_ICPR[1] = 1 << copy_enInterruptNumber;
-    }
-    else if (copy_enInterruptNumber < 68)
-    {
-        copy_enInterruptNumber -= 64;
-        MNVIC->NVIC_ICPR[2] = 1 << copy_enInterruptNumber;
-    }
-    else
-    {
-        Local_ErrorState = OUT_OF_RANGE_ERR;
-    }
-
-
-    // u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
-    // copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
-
-    // if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    // if (copy_enInterruptNumber < 32)
     // {
-    //    MNVIC->NVIC_ICPR[Local_u8RegisterNumber] = 1 << copy_enInterruptNumber;
+    //     MNVIC->NVIC_ICPR[0] = 1 << copy_enInterruptNumber;
+    // }
+    // else if (copy_enInterruptNumber < 64)
+    // {
+    //     copy_enInterruptNumber -= 32;
+    //     MNVIC->NVIC_ICPR[1] = 1 << copy_enInterruptNumber;
+    // }
+    // else if (copy_enInterruptNumber < 68)
+    // {
+    //     copy_enInterruptNumber -= 64;
+    //     MNVIC->NVIC_ICPR[2] = 1 << copy_enInterruptNumber;
     // }
     // else
     // {
     //     Local_ErrorState = OUT_OF_RANGE_ERR;
     // }
 
+
+    u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
+    copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
+
+    if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    {
+       MNVIC->NVIC_ICPR[Local_u8RegisterNumber] = 1 << copy_enInterruptNumber;
+    }
+    else
+    {
+        Local_ErrorState = OUT_OF_RANGE_ERR;
+    }
 
     return Local_ErrorState;
 }
@@ -198,37 +197,37 @@ ErrorState_t MNVIC_enGetActiveStatus(MNVIC_External_Interrupt_Number_t copy_enIn
 {
     ErrorState_t Local_ErrorState = OK;
 
-    if (copy_enInterruptNumber < 32)
-    {
-        *ptr_ReturnState = GET_BIT(MNVIC-> NVIC_IABR[0], copy_enInterruptNumber);
-    }
-    else if (copy_enInterruptNumber < 64)
-    {
-        copy_enInterruptNumber -= 32;
-        *ptr_ReturnState = GET_BIT(MNVIC-> NVIC_IABR[1], copy_enInterruptNumber);
-    }
-    else if (copy_enInterruptNumber < 68)
-    {
-        copy_enInterruptNumber -= 64;
-        *ptr_ReturnState = GET_BIT(MNVIC-> NVIC_IABR[2], copy_enInterruptNumber);
-    }
-    else
-    {
-        Local_ErrorState = OUT_OF_RANGE_ERR;
-    }
-
-
-    // u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
-    // copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
-
-    // if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    // if (copy_enInterruptNumber < 32)
     // {
-    //    *ptr_ReturnState = GET_BIT(MNVIC-> NVIC_IABR[Local_u8RegisterNumber], copy_enInterruptNumber);
+    //     *ptr_ReturnState = GET_BIT(MNVIC-> NVIC_IABR[0], copy_enInterruptNumber);
+    // }
+    // else if (copy_enInterruptNumber < 64)
+    // {
+    //     copy_enInterruptNumber -= 32;
+    //     *ptr_ReturnState = GET_BIT(MNVIC-> NVIC_IABR[1], copy_enInterruptNumber);
+    // }
+    // else if (copy_enInterruptNumber < 68)
+    // {
+    //     copy_enInterruptNumber -= 64;
+    //     *ptr_ReturnState = GET_BIT(MNVIC-> NVIC_IABR[2], copy_enInterruptNumber);
     // }
     // else
     // {
     //     Local_ErrorState = OUT_OF_RANGE_ERR;
     // }
+
+
+    u8 Local_u8RegisterNumber = copy_enInterruptNumber / 32;
+    copy_enInterruptNumber = copy_enInterruptNumber % 32;  /* Map it into the bit number of the register */
+
+    if(copy_enInterruptNumber >= 0 && copy_enInterruptNumber < 68)
+    {
+       *ptr_ReturnState = GET_BIT(MNVIC-> NVIC_IABR[Local_u8RegisterNumber], copy_enInterruptNumber);
+    }
+    else
+    {
+        Local_ErrorState = OUT_OF_RANGE_ERR;
+    }
 
 
     return Local_ErrorState;
