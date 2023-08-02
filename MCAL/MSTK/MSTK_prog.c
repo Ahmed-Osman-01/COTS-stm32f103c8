@@ -63,6 +63,9 @@ ErrorState_t MSTK_SetIntervalSingle(u32 copy_u32DelayMicroSec, void (*ptrFn)(voi
 
     ErrorState_t Local_ErrorState = OK;
 
+    /* Stop the timer first in case it was already working */
+    MSTK_StopTimer();
+
     Callback = ptrFn;
     g_u8TimerMode = SINGLE;
 
@@ -122,7 +125,7 @@ ErrorState_t MSTK_SetIntervalPeriodic(u32 copy_u32DelayMicroSec, void (*ptrFn)(v
 
 void MSTK_StopTimer(void)
 {
-    MSTK->STK_CTRL = 0;
+    CLR_BIT(MSTK->STK_CTRL, 0);
     MSTK->STK_LOAD = 0;
     MSTK->STK_VAL = 0;
 }

@@ -12,9 +12,9 @@
 #ifndef GPIO_INT_H
 #define GPIO_INT_H
 
-#define GPIO_u8PORTA  1
-#define GPIO_u8PORTB  2
-#define GPIO_u8PORTC  3
+#define GPIO_u8PORTA  0
+#define GPIO_u8PORTB  1
+#define GPIO_u8PORTC  2
 
 #define GPIO_u8PIN0    0
 #define GPIO_u8PIN1    1
@@ -123,7 +123,7 @@ u8 GPIO_u8TogglePin(u8 Copy_u8PortID, u8 Copy_u8PinID);
 /* @param Copy_u8PortID Port of the pin.                                                            */
 /* @param Copy_u8PortPins The Lower port pins (0-7) or Higher port pins (8-15).                     */
 /****************************************************************************************************/
-u8 GPIO_u8LockPin(u8 Copy_u8PortID, u8 Copy_u8PinID);
+u8 GPIO_u8LockPin(u8 Copy_u8PortID, u8 Copy_u8PinID); 
 
 
 

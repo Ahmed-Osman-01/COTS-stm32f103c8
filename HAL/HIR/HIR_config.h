@@ -1,13 +1,11 @@
 /****************************************************************************************************/
 /* AUTHOR               :     Ahmed Osman                                                           */
-/* Origin Date          :     25/07/2023                                                            */
+/* Origin Date          :     1/08/2023                                                             */
 /* Version              :     1.0.0                                                                 */
-/* SWC                  :     SysTick                                                               */
+/* SWC                  :     IR Reciever                                                           */
 /****************************************************************************************************/
 
-#ifndef MSTK_CONFIG_H
-#define MSTK_CONFIG_H
-
-#define STK_MODE     STK_CLK_AHB_DIV_8
+#ifndef HIR_CONFIG_H
+#define HIR_CONFIG_H
 
 #endif

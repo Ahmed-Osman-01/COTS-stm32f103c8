@@ -406,4 +406,50 @@ typedef struct
 
 #define MSTK    ((STK_REG_DEF_t *) STK_BASE_ADDRESS)
 
+
+
+/****************************************************************************************************/
+/**************************************** DMA Registers *********************************************/
+/****************************************************************************************************/
+
+#define MDMA_BASE_ADDRESS   0x40020000
+
+typedef struct
+{
+   volatile u32 DMA_CCR;
+   volatile u32 DMA_CNDTR;
+   volatile u32 DMA_CPAR;
+   volatile u32 DMA_CMAR;
+   volatile u32 RESERVED; 
+
+}MDMA_CHANNEL_t;
+
+
+typedef struct
+{
+  volatile u32 DMA_ISR;
+  volatile u32 DMA_IFCR;
+
+    MDMA_CHANNEL_t DMA_CHANNEL[7];
+
+}MDMA_REG_DEF_t;
+
+/* DMA_CCR Register */
+#define   MDMA_CCR_EN          0
+#define   MDMA_CCR_TCIE        1
+#define   MDMA_CCR_HTIE        2
+#define   MDMA_CCR_TEIE        3
+#define   MDMA_CCR_DIR         4
+#define   MDMA_CCR_CIRC        5
+#define   MDMA_CCR_PINC        6
+#define   MDMA_CCR_MINC        7
+#define   MDMA_CCR_PSIZE       8
+#define   MDMA_CCR_MSIZE       10
+#define   MDMA_CCR_PL          12
+#define   MDMA_CCR_MEM2MEM     14
+
+
+
+#define MDMA    ((MDMA_REG_DEF_t *) MDMA_BASE_ADDRESS)
+
 #endif

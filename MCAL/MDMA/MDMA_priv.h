@@ -1,13 +1,17 @@
 /****************************************************************************************************/
 /* AUTHOR               :     Ahmed Osman                                                           */
-/* Origin Date          :     25/07/2023                                                            */
+/* Origin Date          :     31/07/2023                                                            */
 /* Version              :     1.0.0                                                                 */
-/* SWC                  :     SysTick                                                               */
+/* SWC                  :     DMA                                                                   */
 /****************************************************************************************************/
 
-#ifndef MSTK_CONFIG_H
-#define MSTK_CONFIG_H
+#ifndef MDMA_PRIV_H
+#define MDMA_PRIV_H
 
-#define STK_MODE     STK_CLK_AHB_DIV_8
+/* Interrupts order in ISR and IFCR registers */
+#define MDMA_GI      0  
+#define MDMA_TCI     1
+#define MDMA_HTI     2
+#define MDMA_TEI     3
 
 #endif

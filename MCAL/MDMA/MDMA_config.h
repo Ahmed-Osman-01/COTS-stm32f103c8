@@ -1,13 +1,12 @@
 /****************************************************************************************************/
 /* AUTHOR               :     Ahmed Osman                                                           */
-/* Origin Date          :     25/07/2023                                                            */
+/* Origin Date          :     31/07/2023                                                            */
 /* Version              :     1.0.0                                                                 */
-/* SWC                  :     SysTick                                                               */
+/* SWC                  :     DMA                                                                   */
 /****************************************************************************************************/
 
-#ifndef MSTK_CONFIG_H
-#define MSTK_CONFIG_H
+#ifndef MDMA_CONFIG_H
+#define MDMA_CONFIG_H
 
-#define STK_MODE     STK_CLK_AHB_DIV_8
 
 #endif

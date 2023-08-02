@@ -5,15 +5,9 @@
 /* Version              :     1.0.0                                                                 */
 /* SWC                  :     LED                                                                   */
 /****************************************************************************************************/
-/*
- * LED_int.h
- *
- *  Created on: May 29, 2023
- *      Author: Osman
- */
 
-#ifndef LED_LED_INT_H_
-#define LED_LED_INT_H_
+#ifndef HLED_INT_H_
+#define HLED_INT_H_
 
 
 
@@ -22,40 +16,40 @@
 /****************************************************************************************************/
 typedef enum
 {
-	LED_RED,
-	LED_GRN,
-	LED_BLUE,
-    LED_MAX
+	HLED_RED,
+	HLED_GRN,
+	HLED_BLUE,
+    HLED_MAX
 
-}LED_t;
+}HLED_t;
 
 
 /****************************************************************************************************/
 /* Sets the Mode of the LED pin as push/pull 2MHZ output                                            */
 /* @param The LED                                                                                   */
 /****************************************************************************************************/
-ErrorState_t LED_enInitLED(LED_t coppy_enLED);
+ErrorState_t HLED_enInitLED(HLED_t coppy_enLED);
 
 /****************************************************************************************************/
 /* Turns The given LED ON                                                                           */
 /* @param The LED                                                                                   */
 /****************************************************************************************************/
-ErrorState_t LED_enSetLEDOn(LED_t coppy_enLED);
+ErrorState_t HLED_enSetLEDOn(HLED_t coppy_enLED);
 
 /****************************************************************************************************/
 /* Turns the given LED OFF                                                                          */
 /* @param The LED                                                                                   */
 /****************************************************************************************************/
-ErrorState_t LED_enSetLEDOff(LED_t coppy_enLED);
+ErrorState_t HLED_enSetLEDOff(HLED_t coppy_enLED);
 
 /****************************************************************************************************/
 /* Toggles the state of the LED                                                                     */
 /* @param The LED                                                                                   */
 /****************************************************************************************************/
-ErrorState_t LED_enToggleLED(LED_t coppy_enLED);
+ErrorState_t HLED_enToggleLED(HLED_t coppy_enLED);
 
 
 
 
 
-#endif /* LED_LED_INT_H_ */
+#endif /* HLED_INT_H_ */
